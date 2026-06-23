@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Choose Your Subscription - MintAI Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="subscription-page">
+    <header class="site-header">
+        <div class="brand">
+            <div class="logo">M</div>
+            <div class="title">
+                <span class="name">MintAI</span>
+                <span class="tag">Chat</span>
+            </div>
+        </div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </nav>
+    </header>
+
+    <main class="subscription-hero">
+        <div class="subscription-container">
+            <div class="subscription-header">
+                <h1>Choose Your Plan</h1>
+                <p>Unlock unlimited access to advanced AI models</p>
+            </div>
+
+            <div class="subscription-tabs">
+                <button class="subscription-tab-btn active" data-tab="plans">Plans</button>
+                <button class="subscription-tab-btn" data-tab="payment">Payment</button>
+            </div>
+
+            <!-- Plans Tab -->
+            <div id="plans" class="subscription-tab-content active">
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <h3>Starter</h3>
+                        <div class="price">
+                            <span class="amount">$4.99</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>✓ 50 messages/day</li>
+                            <li>✓ 3 AI Models</li>
+                            <li>✓ Conversation history</li>
+                            <li>✓ Basic file attachments</li>
+                            <li>✗ Priority support</li>
+                        </ul>
+                        <button class="btn primary btn-full select-plan" data-plan="starter" data-price="4.99">Select Plan</button>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <div class="badge">Most Popular</div>
+                        <h3>Professional</h3>
+                        <div class="price">
+                            <span class="amount">$12.99</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>✓ Unlimited messages</li>
+                            <li>✓ All AI Models</li>
+                            <li>✓ Advanced conversation history</li>
+                            <li>✓ File attachments (up to 50MB)</li>
+                            <li>✓ Priority support</li>
+                        </ul>
+                        <button class="btn primary btn-full select-plan" data-plan="professional" data-price="12.99">Select Plan</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Enterprise</h3>
+                        <div class="price">
+                            <span class="amount">$29.99</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>✓ Unlimited everything</li>
+                            <li>✓ Custom AI models</li>
+                            <li>✓ API access</li>
+                            <li>✓ Team collaboration</li>
+                            <li>✓ 24/7 dedicated support</li>
+                        </ul>
+                        <button class="btn primary btn-full select-plan" data-plan="enterprise" data-price="29.99">Select Plan</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Tab -->
+            <div id="payment" class="subscription-tab-content">
+                <div class="payment-form-wrapper">
+                    <h2>Payment Details</h2>
+                    <p class="payment-subtitle">Complete your subscription setup</p>
+
+                    <form id="paymentForm" class="payment-form">
+                        <div class="form-section">
+                            <h3>Selected Plan</h3>
+                            <div class="selected-plan-display">
+                                <span id="planName">No plan selected</span>
+                                <span id="planPrice">$0.00</span>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Personal Information</h3>
+                            
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input 
+                                    type="text" 
+                                    id="fullName" 
+                                    name="fullName" 
+                                    placeholder="John Doe"
+                                    required
+                                    minlength="2"
+                                >
+                                <span class="error-msg"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    placeholder="john@example.com"
+                                    required
+                                >
+                                <span class="error-msg"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone" 
+                                    placeholder="+1 (555) 123-4567"
+                                    required
+                                >
+                                <span class="error-msg"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Billing Address</h3>
+                            
+                            <div class="form-group">
+                                <label for="address">Street Address</label>
+                                <input 
+                                    type="text" 
+                                    id="address" 
+                                    name="address" 
+                                    placeholder="123 Main St"
+                                    required
+                                >
+                                <span class="error-msg"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input 
+                                        type="text" 
+                                        id="city" 
+                                        name="city" 
+                                        placeholder="New York"
+                                        required
+                                    >
+                                    <span class="error-msg"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State/Province</label>
+                                    <input 
+                                        type="text" 
+                                        id="state" 
+                                        name="state" 
+                                        placeholder="NY"
+                                        required
+                                    >
+                                    <span class="error-msg"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP/Postal Code</label>
+                                    <input 
+                                        type="text" 
+                                        id="zip" 
+                                        name="zip" 
+                                        placeholder="10001"
+                                        required
+                                    >
+                                    <span class="error-msg"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input 
+                                    type="text" 
+                                    id="country" 
+                                    name="country" 
+                                    placeholder="United States"
+                                    required
+                                >
+                                <span class="error-msg"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Payment Information</h3>
+                            <p class="security-notice">🔒 Your payment information is encrypted and secure</p>
+
+                            <div class="form-group">
+                                <label for="cardName">Cardholder Name</label>
+                                <input 
+                                    type="text" 
+                                    id="cardName" 
+                                    name="cardName" 
+                                    placeholder="Name on card"
+                                    required
+                                    minlength="2"
+                                >
+                                <span class="error-msg"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number</label>
+                                <input 
+                                    type="text" 
+                                    id="cardNumber" 
+                                    name="cardNumber" 
+                                    placeholder="1234 5678 9012 3456"
+                                    maxlength="19"
+                                    required
+                                >
+                                <span class="error-msg"></span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry">Expiry Date</label>
+                                    <input 
+                                        type="text" 
+                                        id="expiry" 
+                                        name="expiry" 
+                                        placeholder="MM/YY"
+                                        maxlength="5"
+                                        required
+                                    >
+                                    <span class="error-msg"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input 
+                                        type="text" 
+                                        id="cvv" 
+                                        name="cvv" 
+                                        placeholder="123"
+                                        maxlength="4"
+                                        required
+                                    >
+                                    <span class="error-msg"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input 
+                                type="checkbox" 
+                                id="billingAgreement" 
+                                name="billingAgreement" 
+                                required
+                            >
+                            <label for="billingAgreement">I agree to the billing terms and conditions</label>
+                            <span class="error-msg"></span>
+                        </div>
+
+                        <button type="submit" class="btn primary btn-full">Complete Payment</button>
+                        <p class="payment-info">You will not be charged until you confirm your payment</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> MintAI. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Encryption utility (simple XOR for demonstration - in production use proper encryption)
+        const EncryptionUtil = {
+            encode: function(str) {
+                return btoa(String.fromCharCode.apply(null, str.split('').map(c => c.charCodeAt(0) ^ 42)));
+            },
+            decode: function(encoded) {
+                try {
+                    return atob(encoded).split('').map(c => String.fromCharCode(c.charCodeAt(0) ^ 42)).join('');
+                } catch (e) {
+                    return '';
+                }
+            }
+        };
+
+        let selectedPlan = null;
+        let selectedPrice = null;
+
+        const tabBtns = document.querySelectorAll('.subscription-tab-btn');
+        const tabContents = document.querySelectorAll('.subscription-tab-content');
+        const selectPlanBtns = document.querySelectorAll('.select-plan');
+        const paymentForm = document.getElementById('paymentForm');
+
+        // Tab switching
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.dataset.tab;
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(tabName).classList.add('active');
+            });
+        });
+
+        // Plan selection
+        selectPlanBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                selectedPlan = btn.dataset.plan.charAt(0).toUpperCase() + btn.dataset.plan.slice(1);
+                selectedPrice = btn.dataset.price;
+                
+                document.getElementById('planName').textContent = selectedPlan + ' Plan';
+                document.getElementById('planPrice').textContent = '$' + selectedPrice;
+
+                // Switch to payment tab
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                tabBtns[1].classList.add('active');
+                document.getElementById('payment').classList.add('active');
+
+                // Scroll to payment form
+                setTimeout(() => {
+                    paymentForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 200);
+            });
+        });
+
+        // Card number formatting
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = '';
+            for (let i = 0; i < value.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedValue += ' ';
+                }
+                formattedValue += value[i];
+            }
+            e.target.value = formattedValue;
+        });
+
+        // Expiry date formatting
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // CVV formatting
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
+        });
+
+        // Form submission
+        paymentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            document.querySelectorAll('.error-msg').forEach(msg => msg.textContent = '');
+
+            // Validation
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const state = document.getElementById('state').value.trim();
+            const zip = document.getElementById('zip').value.trim();
+            const country = document.getElementById('country').value.trim();
+            const cardName = document.getElementById('cardName').value.trim();
+            const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value;
+            const billingAgreement = document.getElementById('billingAgreement').checked;
+
+            if (fullName.length < 2) {
+                document.getElementById('fullName').parentElement.querySelector('.error-msg').textContent = 'Name must be at least 2 characters';
+                isValid = false;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email').parentElement.querySelector('.error-msg').textContent = 'Please enter a valid email';
+                isValid = false;
+            }
+
+            if (!/^\+?[0-9\s\-()]{10,}$/.test(phone)) {
+                document.getElementById('phone').parentElement.querySelector('.error-msg').textContent = 'Please enter a valid phone number';
+                isValid = false;
+            }
+
+            if (address.length < 5) {
+                document.getElementById('address').parentElement.querySelector('.error-msg').textContent = 'Please enter a valid address';
+                isValid = false;
+            }
+
+            // Card validation
+            if (cardNumber.length !== 16) {
+                document.getElementById('cardNumber').parentElement.querySelector('.error-msg').textContent = 'Card number must be 16 digits';
+                isValid = false;
+            }
+
+            if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry)) {
+                document.getElementById('expiry').parentElement.querySelector('.error-msg').textContent = 'Expiry must be in MM/YY format';
+                isValid = false;
+            }
+
+            if (!/^\d{3,4}$/.test(cvv)) {
+                document.getElementById('cvv').parentElement.querySelector('.error-msg').textContent = 'CVV must be 3-4 digits';
+                isValid = false;
+            }
+
+            if (!billingAgreement) {
+                document.getElementById('billingAgreement').parentElement.querySelector('.error-msg').textContent = 'You must agree to billing terms';
+                isValid = false;
+            }
+
+            if (!selectedPlan) {
+                alert('Please select a plan first');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Encrypt sensitive data
+                const encryptedCardNumber = EncryptionUtil.encode(cardNumber);
+                const encryptedCVV = EncryptionUtil.encode(cvv);
+                const encryptedCardName = EncryptionUtil.encode(cardName);
+
+                // Create subscription data object
+                const subscriptionData = {
+                    userId: 'user_' + Date.now(),
+                    timestamp: new Date().toISOString(),
+                    plan: selectedPlan,
+                    price: selectedPrice,
+                    personalInfo: {
+                        fullName: fullName,
+                        email: email,
+                        phone: phone
+                    },
+                    billingAddress: {
+                        address: address,
+                        city: city,
+                        state: state,
+                        zip: zip,
+                        country: country
+                    },
+                    paymentInfo: {
+                        cardName: encryptedCardName,
+                        cardNumber: encryptedCardNumber,
+                        expiry: expiry,
+                        cvv: encryptedCVV
+                    },
+                    status: 'active',
+                    renewalDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+                };
+
+                // Save to localStorage
+                let allSubscriptions = JSON.parse(localStorage.getItem('mintai_subscriptions') || '[]');
+                allSubscriptions.push(subscriptionData);
+                localStorage.setItem('mintai_subscriptions', JSON.stringify(allSubscriptions));
+
+                // Also save current user session
+                localStorage.setItem('mintai_user', fullName);
+                localStorage.setItem('mintai_user_session', JSON.stringify({
+                    email: email,
+                    plan: selectedPlan,
+                    subscriptionId: subscriptionData.userId,
+                    subscriptedAt: new Date().toISOString()
+                }));
+
+                alert('Payment processed successfully! Your subscription is now active.');
+                setTimeout(() => {
+                    window.location.href = 'chat.html?user=' + encodeURIComponent(fullName) + '&plan=' + encodeURIComponent(selectedPlan);
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>

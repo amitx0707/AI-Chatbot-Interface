@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MintAI — Welcome</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- page styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="landing-page">
+    <header class="site-header">
+        <div class="brand">
+            <div class="logo" aria-hidden="true">M</div>
+            <div class="title">
+                <span class="name">MintAI</span>
+                <small class="tag">Conversational Intelligence</small>
+            </div>
+        </div>
+
+        <nav class="top-nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="registration.html" style="color:var(--accent); font-weight:600;">Sign Up/Log In</a>
+        </nav>
+
+        <!-- theme toggle -->
+        <div style="display:flex;align-items:center;gap:8px">
+            <button id="themeToggle" class="btn ghost" aria-pressed="false" title="Toggle theme">Cyberpunk</button>
+        </div>
+    </header>
+
+    <main class="hero" role="main">
+        <div class="card">
+            <h1 class="hero-title">Welcome to MintAI</h1>
+            <p class="hero-sub">Smart, friendly chat assistant. Start a session and explore prompts, memory, and tools.</p>
+
+            <form id="entryForm" class="entry-form" autocomplete="off">
+                <label for="username" class="sr-only">Your name</label>
+                <input id="username" name="username" type="text" placeholder="Enter your name (optional)" />
+                <div class="controls">
+                    <button type="submit" class="btn primary">Start Chat</button>
+                    <a href="subscription.html" class="btn ghost">Subscribe Now</a>
+                </div>
+            </form>
+
+            <ul class="features">
+                <li>AI-assisted conversations</li>
+                <li>Context memory</li>
+                <li>Secure & private</li>
+            </ul>
+        </div>
+
+        <!-- subtle decorative blobs -->
+        <div class="bg-blob blob-left" aria-hidden="true"></div>
+        <div class="bg-blob blob-right" aria-hidden="true"></div>
+    </main>
+    <!-- Featured chatbots (added below hero) -->
+    <section class="bots" aria-label="Featured chatbots">
+        <h2 class="bots-title">Featured Chatbots</h2>
+        <div class="bot-grid">
+            <article class="bot-card">
+                <div class="bot-avatar" aria-hidden="true">A</div>
+                <div class="bot-meta">
+                    <div class="bot-name">Astra</div>
+                    <div class="bot-desc">Conversational generalist — friendly & helpful.</div>
+                </div>
+                <div class="bot-rating" aria-label="4.8 out of 5">
+                    <span class="rating-value">4.8</span>
+                    <div class="stars" title="4.8 / 5">★★★★★</div>
+                </div>
+            </article>
+
+            <article class="bot-card">
+                <div class="bot-avatar" aria-hidden="true">N</div>
+                <div class="bot-meta">
+                    <div class="bot-name">Neon</div>
+                    <div class="bot-desc">Fast code helper — focussed on developer workflows.</div>
+                </div>
+                <div class="bot-rating" aria-label="4.6 out of 5">
+                    <span class="rating-value">4.6</span>
+                    <div class="stars" title="4.6 / 5">★★★★★</div>
+                </div>
+            </article>
+
+            <article class="bot-card">
+                <div class="bot-avatar" aria-hidden="true">S</div>
+                <div class="bot-meta">
+                    <div class="bot-name">Sage</div>
+                    <div class="bot-desc">Research assistant — cites sources and reasons.</div>
+                </div>
+                <div class="bot-rating" aria-label="4.9 out of 5">
+                    <span class="rating-value">4.9</span>
+                    <div class="stars" title="4.9 / 5">★★★★★</div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <small>© <span id="year"></span> MintAI — Built with care</small>
+    </footer>
+   <script src="script.js"></script>
+</body>
+</html>

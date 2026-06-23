@@ -1,0 +1,96 @@
+<!-- ...existing code... -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MintAI — Chat</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="chat-page">
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">M</div>
+      <div class="title">
+        <span class="name">MintAI</span>
+        <small class="tag">Conversational Intelligence</small>
+      </div>
+    </div>
+
+    <nav class="top-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="subscription.html">Subscribe</a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:10px">
+      <button id="sidebarToggle" class="btn ghost" title="Toggle sidebar" aria-expanded="true">☰</button>
+      <button id="themeToggle" class="btn ghost" aria-pressed="false" title="Toggle theme">Cyberpunk</button>
+    </div>
+  </header>
+
+  <main class="hero" role="main">
+    <div class="layout">
+      <!-- LEFT SIDEBAR: conversations only -->
+      <aside class="sidebar" id="chatSidebar" aria-label="Conversations">
+        <div class="sidebar-head">
+          <strong>Conversations</strong>
+          <small class="muted">Your recent chats</small>
+        </div>
+
+        <ul class="conversation-list" id="conversationList">
+          <!-- filled by chat.js -->
+        </ul>
+
+        <div class="sidebar-foot">
+          <button id="newChat" class="btn ghost">+ New</button>
+          <button id="clearHistory" class="btn ghost">Clear all</button>
+        </div>
+      </aside>
+
+      <!-- CHAT PANEL: covers remaining space and is flexible -->
+      <section class="chat-panel" aria-label="Chat panel">
+        <header class="chat-header">
+          <div class="chat-meta">
+            <div class="chat-model-label">Model</div>
+            <select id="modelSelect" class="model-select" aria-label="Choose model">
+              <option value="Astra">Astra</option>
+              <option value="Neon">Neon</option>
+              <option value="Sage">Sage</option>
+              <option value="gpt-4">GPT-4</option>
+            </select>
+          </div>
+
+          <div class="chat-controls">
+            <button id="renameChat" class="btn ghost" title="Rename chat">Rename</button>
+            <button id="deleteChat" class="btn ghost" title="Delete chat">Delete</button>
+          </div>
+        </header>
+
+        <div class="messages" id="messages" role="log" aria-live="polite"></div>
+
+        <form id="composer" class="composer" autocomplete="off">
+          <button id="attachBtn" type="button" class="btn ghost attach-btn" title="Attach file" aria-label="Attach file">📎</button>
+          <input id="attachmentInput" type="file" hidden />
+          <div id="attachmentPreview" class="attachment-preview" aria-live="polite" hidden></div>
+          <input id="messageInput" type="text" placeholder="Write a message..." />
+          <button type="submit" class="btn primary">Send</button>
+        </form>
+      </section>
+    </div>
+
+    <div class="bg-blob blob-left" aria-hidden="true"></div>
+    <div class="bg-blob blob-right" aria-hidden="true"></div>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> MintAI — Built with care</small>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="chat.js" defer></script>
+</body>
+</html>
+<!-- ...existing code... -->

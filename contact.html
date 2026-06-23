@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us - MintAI Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="contact-page">
+    <header class="site-header">
+        <div class="brand">
+            <div class="logo">M</div>
+            <div class="title">
+                <span class="name">MintAI</span>
+                <span class="tag">Chat</span>
+            </div>
+        </div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="subscription.html">Subscribe</a>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </nav>
+    </header>
+
+    <main class="contact-hero">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>Get in Touch</h1>
+                <p>Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-form-wrapper">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="contactName">Full Name</label>
+                            <input 
+                                type="text" 
+                                id="contactName" 
+                                name="name" 
+                                placeholder="Your name"
+                                required
+                                minlength="2"
+                            >
+                            <span class="error-msg"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="contactEmail" 
+                                name="email" 
+                                placeholder="your@email.com"
+                                required
+                            >
+                            <span class="error-msg"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactSubject">Subject</label>
+                            <select id="contactSubject" name="subject" required>
+                                <option value="">-- Select a subject --</option>
+                                <option value="support">Support/Bug Report</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="error-msg"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea 
+                                id="contactMessage" 
+                                name="message" 
+                                placeholder="Your message (min 10 characters)"
+                                rows="6"
+                                required
+                                minlength="10"
+                            ></textarea>
+                            <span class="error-msg"></span>
+                        </div>
+
+                        <button type="submit" class="btn primary btn-full">Send Message</button>
+                        <p class="form-note">We typically respond within 24 hours</p>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">📧</div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:support@mintai.com">support@mintai.com</a></p>
+                        <p class="info-desc">For technical support and inquiries</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">💬</div>
+                        <h3>Live Chat</h3>
+                        <p><a href="#" onclick="alert('Live chat coming soon!')">Start chat</a></p>
+                        <p class="info-desc">Available Monday-Friday, 9AM-6PM UTC</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">🐦</div>
+                        <h3>Social Media</h3>
+                        <div class="social-links">
+                            <a href="#" target="_blank" title="Twitter">Twitter</a>
+                            <a href="#" target="_blank" title="Discord">Discord</a>
+                            <a href="#" target="_blank" title="LinkedIn">LinkedIn</a>
+                        </div>
+                        <p class="info-desc">Follow us for updates and announcements</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">⏰</div>
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM UTC</p>
+                        <p>Saturday - Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> MintAI. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const form = document.getElementById('contactForm');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            // Clear previous errors
+            document.querySelectorAll('.error-msg').forEach(msg => msg.textContent = '');
+
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value.trim();
+
+            // Name validation
+            if (name.length < 2) {
+                document.getElementById('contactName').parentElement.querySelector('.error-msg').textContent = 'Name must be at least 2 characters';
+                isValid = false;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('contactEmail').parentElement.querySelector('.error-msg').textContent = 'Please enter a valid email';
+                isValid = false;
+            }
+
+            // Subject validation
+            if (!subject) {
+                document.getElementById('contactSubject').parentElement.querySelector('.error-msg').textContent = 'Please select a subject';
+                isValid = false;
+            }
+
+            // Message validation
+            if (message.length < 10) {
+                document.getElementById('contactMessage').parentElement.querySelector('.error-msg').textContent = 'Message must be at least 10 characters';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Store contact message (in real app, would send to server)
+                const contactData = {
+                    name,
+                    email,
+                    subject,
+                    message,
+                    sentAt: new Date().toISOString()
+                };
+                
+                // Get existing messages or create array
+                let messages = JSON.parse(localStorage.getItem('mintai_contacts') || '[]');
+                messages.push(contactData);
+                localStorage.setItem('mintai_contacts', JSON.stringify(messages));
+
+                // Show success message
+                alert('Thank you for your message! We\'ll get back to you soon.');
+                form.reset();
+            }
+        });
+    </script>
+</body>
+</html>

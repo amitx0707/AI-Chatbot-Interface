@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign In / Sign Up - MintAI Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+    <header class="site-header">
+        <div class="brand">
+            <div class="logo">M</div>
+            <div class="title">
+                <span class="name">MintAI</span>
+                <span class="tag">Chat</span>
+            </div>
+        </div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </nav>
+    </header>
+
+    <main class="auth-hero">
+        <div class="auth-card">
+            <h1>Welcome Back</h1>
+            <p class="auth-subtitle">Sign in to your MintAI account</p>
+
+            <form id="signInForm" class="auth-form">
+                <div class="form-group">
+                    <label for="signinEmail">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="signinEmail" 
+                        name="email" 
+                        placeholder="your@email.com"
+                        required
+                    >
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="signinPassword">Password</label>
+                    <input 
+                        type="password" 
+                        id="signinPassword" 
+                        name="password" 
+                        placeholder="Enter your password"
+                        required
+                        minlength="8"
+                    >
+                    <span class="error-msg"></span>
+                </div>
+
+                <div class="form-group checkbox">
+                    <input 
+                        type="checkbox" 
+                        id="rememberMe" 
+                        name="remember"
+                    >
+                    <label for="rememberMe">Remember me</label>
+                </div>
+
+                <button type="submit" class="btn primary btn-full">Sign In</button>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="signup.html">Create one</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> MintAI. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Sign In Form Handling
+        document.getElementById('signInForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            document.querySelectorAll('#signInForm .error-msg').forEach(msg => msg.textContent = '');
+
+            const email = document.getElementById('signinEmail').value.trim();
+            const password = document.getElementById('signinPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('signinEmail').parentElement.querySelector('.error-msg').textContent = 'Please enter a valid email';
+                isValid = false;
+            }
+
+            if (password.length < 8) {
+                document.getElementById('signinPassword').parentElement.querySelector('.error-msg').textContent = 'Password must be at least 8 characters';
+                isValid = false;
+            }
+
+            if (isValid) {
+                const userData = { email, rememberMe, loggedInAt: new Date().toISOString() };
+                localStorage.setItem('mintai_user_session', JSON.stringify(userData));
+                if (rememberMe) localStorage.setItem('mintai_remember_email', email);
+                
+                alert('Sign in successful! Redirecting to chat...');
+                setTimeout(() => {
+                    const name = email.split('@')[0];
+                    localStorage.setItem('mintai_user', name);
+                    window.location.href = 'chat.html';
+                }, 1500);
+            }
+        });
+
+        // Restore remember me email if available
+        window.addEventListener('load', function() {
+            const rememberEmail = localStorage.getItem('mintai_remember_email');
+            if (rememberEmail) {
+                document.getElementById('signinEmail').value = rememberEmail;
+                document.getElementById('rememberMe').checked = true;
+            }
+        });
+    </script>
+</body>
+</html>
